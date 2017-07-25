@@ -7,7 +7,10 @@ a {
   text-decoration: none;
 }
 
-ul,li {
+header ul,
+header li,
+footer ul,
+footer li {
   list-style: none;
 }
 
@@ -255,7 +258,10 @@ html,body,#container {
   margin-top: 12px;
   font-size: 16px;
   line-height: 1.6;
-}/*ok*/
+}
+.article-entry img {
+  max-width: 100%;
+}
 
 .article-entry hr {
   border: 1px dashed #ddd;

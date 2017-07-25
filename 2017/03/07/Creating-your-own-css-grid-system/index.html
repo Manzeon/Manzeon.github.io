@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   
-  <title>\[译\]创建你自己的CSS网格系统 | Manzeon</title>
+  <title>创建你自己的CSS网格系统 | Manzeon</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="原文链接: http://j4n.co/blog/Creating-your-own-css-grid-system  CSS网格系统的使用已经有很长时间了，他们经常捆绑在各种框架之中，如Bootstrap。我不讨厌Bootstrap，但是如果你仅仅因需要一个网格系统去使用框架，就显得大材小用了。这里，我将告诉大家如何从无到有创建自己的CSS网格系统。">
 <meta name="keywords" content="Translate">
 <meta property="og:type" content="article">
-<meta property="og:title" content="\[译\]创建你自己的CSS网格系统">
+<meta property="og:title" content="创建你自己的CSS网格系统">
 <meta property="og:url" content="http://www.gongwenjun.com/2017/03/07/Creating-your-own-css-grid-system/index.html">
 <meta property="og:site_name" content="Manzeon">
 <meta property="og:description" content="原文链接: http://j4n.co/blog/Creating-your-own-css-grid-system  CSS网格系统的使用已经有很长时间了，他们经常捆绑在各种框架之中，如Bootstrap。我不讨厌Bootstrap，但是如果你仅仅因需要一个网格系统去使用框架，就显得大材小用了。这里，我将告诉大家如何从无到有创建自己的CSS网格系统。">
@@ -17,9 +17,9 @@
 <meta property="og:image" content="http://j4n.co/content/4-blog/10-Creating-your-own-css-grid-system/row.png">
 <meta property="og:image" content="http://j4n.co/content/4-blog/10-Creating-your-own-css-grid-system/column.png">
 <meta property="og:image" content="http://j4n.co/content/4-blog/10-Creating-your-own-css-grid-system/column-gutters.png">
-<meta property="og:updated_time" content="2017-07-25T15:36:15.678Z">
+<meta property="og:updated_time" content="2017-07-25T15:45:33.690Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="\[译\]创建你自己的CSS网格系统">
+<meta name="twitter:title" content="创建你自己的CSS网格系统">
 <meta name="twitter:description" content="原文链接: http://j4n.co/blog/Creating-your-own-css-grid-system  CSS网格系统的使用已经有很长时间了，他们经常捆绑在各种框架之中，如Bootstrap。我不讨厌Bootstrap，但是如果你仅仅因需要一个网格系统去使用框架，就显得大材小用了。这里，我将告诉大家如何从无到有创建自己的CSS网格系统。">
 <meta name="twitter:image" content="http://j4n.co/content/4-blog/10-Creating-your-own-css-grid-system/grid-elements.png">
   
@@ -78,7 +78,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      \[译\]创建你自己的CSS网格系统
+      创建你自己的CSS网格系统
     </h1>
   
 
@@ -117,9 +117,9 @@
 <li>调整我们的网格的移动布局很简单，只需要调整列的宽度。</li>
 <li>为简单起见，我将为800px下的屏幕把列的宽度加倍。</li>
 <li>唯一需要注意的是一些特殊情况：在row中的最后一列。如在<code>.col-2</code>和<code>.col-1</code>在<code>.col-5</code>的旁边。</li>
-<li>为解决这个问题，要将列最后的<code>.col-2</code>和<code>.col-1</code>设置为<code>width: 100%</code>。<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">media</span> all and (max-width: <span class="number">800px</span>) &#123;</div><div class="line">  <span class="selector-class">.col-1</span>&#123; <span class="attribute">width</span>: <span class="number">33.33%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-2</span>&#123; <span class="attribute">width</span>: <span class="number">50%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-3</span>&#123; <span class="attribute">width</span>: <span class="number">83.33%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-4</span>&#123; <span class="attribute">width</span>: <span class="number">100%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-5</span>&#123; <span class="attribute">width</span>: <span class="number">100%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-6</span>&#123; <span class="attribute">width</span>: <span class="number">100%</span>; &#125;</div><div class="line">  </div><div class="line">  <span class="selector-class">.row</span> <span class="selector-class">.col-2</span><span class="selector-pseudo">:last-of-type</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="selector-class">.row</span> <span class="selector-class">.col-5</span> ~ <span class="selector-class">.col-1</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-</li>
+<li>为解决这个问题，要将列最后的<code>.col-2</code>和<code>.col-1</code>设置为<code>width: 100%</code>。</li>
 </ul>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">media</span> all and (max-width: <span class="number">800px</span>) &#123;</div><div class="line">  <span class="selector-class">.col-1</span>&#123; <span class="attribute">width</span>: <span class="number">33.33%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-2</span>&#123; <span class="attribute">width</span>: <span class="number">50%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-3</span>&#123; <span class="attribute">width</span>: <span class="number">83.33%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-4</span>&#123; <span class="attribute">width</span>: <span class="number">100%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-5</span>&#123; <span class="attribute">width</span>: <span class="number">100%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-6</span>&#123; <span class="attribute">width</span>: <span class="number">100%</span>; &#125;</div><div class="line">  </div><div class="line">  <span class="selector-class">.row</span> <span class="selector-class">.col-2</span><span class="selector-pseudo">:last-of-type</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="selector-class">.row</span> <span class="selector-class">.col-5</span> ~ <span class="selector-class">.col-1</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 <p>对于小于800px的屏幕，我们会将出了最小的列以外的都设置成100%。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">media</span> all and (max-width: <span class="number">650px</span>) &#123;</div><div class="line">  <span class="selector-class">.col-1</span>&#123; <span class="attribute">width</span>: <span class="number">50%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-2</span>&#123; <span class="attribute">width</span>: <span class="number">100%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-3</span>&#123; <span class="attribute">width</span>: <span class="number">100%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-4</span>&#123; <span class="attribute">width</span>: <span class="number">100%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-5</span>&#123; <span class="attribute">width</span>: <span class="number">100%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-6</span>&#123; <span class="attribute">width</span>: <span class="number">100%</span>; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>以上，我们就可以创建属于我们自己的响应式网格系统了。</p>
 <p><strong>但要注意，此教程只是创建自己的系统的开端，这不是一个框架或者说一个完整的解决方案，但我希望它能为大家揭开创建CSS网格神秘的面纱</strong></p>
@@ -139,7 +139,7 @@
     
 <nav id="article-nav">
   
-    <a href="/2017/04/03/Monthly-2017-3/" id="articleNewer" class="btn">上一篇</a>
+    <a href="/2017/04/03/GitHubPage-rebuild/" id="articleNewer" class="btn">上一篇</a>
   
   
 </nav>
