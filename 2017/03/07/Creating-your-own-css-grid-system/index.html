@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>\[译\]创建你自己的CSS网格系统 | Manzeon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原文链接: http://j4n.co/blog/Creating-your-own-css-grid-system  CSS网格系统的使用已经有很长时间了，他们经常捆绑在各种框架之中，如Bootstrap。我不讨厌Bootstrap，但是如果你仅仅因需要一个网格系统去使用框架，就显得大材小用了。这里，我将告诉大家如何从无到有创建自己的CSS网格系统。">
+<meta name="keywords" content="Translate">
+<meta property="og:type" content="article">
+<meta property="og:title" content="\[译\]创建你自己的CSS网格系统">
+<meta property="og:url" content="http://www.gongwenjun.com/2017/03/07/Creating-your-own-css-grid-system/index.html">
+<meta property="og:site_name" content="Manzeon">
+<meta property="og:description" content="原文链接: http://j4n.co/blog/Creating-your-own-css-grid-system  CSS网格系统的使用已经有很长时间了，他们经常捆绑在各种框架之中，如Bootstrap。我不讨厌Bootstrap，但是如果你仅仅因需要一个网格系统去使用框架，就显得大材小用了。这里，我将告诉大家如何从无到有创建自己的CSS网格系统。">
+<meta property="og:image" content="http://j4n.co/content/4-blog/10-Creating-your-own-css-grid-system/grid-elements.png">
+<meta property="og:image" content="http://j4n.co/content/4-blog/10-Creating-your-own-css-grid-system/container.png">
+<meta property="og:image" content="http://j4n.co/content/4-blog/10-Creating-your-own-css-grid-system/row.png">
+<meta property="og:image" content="http://j4n.co/content/4-blog/10-Creating-your-own-css-grid-system/column.png">
+<meta property="og:image" content="http://j4n.co/content/4-blog/10-Creating-your-own-css-grid-system/column-gutters.png">
+<meta property="og:updated_time" content="2017-07-25T15:36:15.678Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="\[译\]创建你自己的CSS网格系统">
+<meta name="twitter:description" content="原文链接: http://j4n.co/blog/Creating-your-own-css-grid-system  CSS网格系统的使用已经有很长时间了，他们经常捆绑在各种框架之中，如Bootstrap。我不讨厌Bootstrap，但是如果你仅仅因需要一个网格系统去使用框架，就显得大材小用了。这里，我将告诉大家如何从无到有创建自己的CSS网格系统。">
+<meta name="twitter:image" content="http://j4n.co/content/4-blog/10-Creating-your-own-css-grid-system/grid-elements.png">
+  
+  
+    <link rel="icon" href="http://ota91wfkz.bkt.clouddn.com/favicon.jpg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <img src="http://ota91wfkz.bkt.clouddn.com/favicon.jpg" alt="logo">
+        <a href="/" id="logo">Manzeon</a>
+      </h1>
+      <ul class="social-links">
+        
+        <li><a href="https://github.com/Manzeon">github</a></li>
+        
+        <li><a href="mailto:gwj19950626@gmail.com">email</a></li>
+        
+        <li><a href="/atom.xml">rrs</a></li>
+        
+      </ul>
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <ul>
+        
+        <li><a class="main-nav-link" href="/">Home</a></li>
+        
+        <li><a class="main-nav-link" href="/archives">Archives</a></li>
+        
+        <li><a class="main-nav-link" href="/about">About</a></li>
+        
+        </ul>
+      </nav>
+    </div>
+</header>
+<header id="header-mobile">
+  <a id="main-nav-toggle" class="nav-icon"></a>
+  <img src="http://ota91wfkz.bkt.clouddn.com/favicon.jpg" alt="logo">
+</header>
+      <main id="main"><article id="post-Creating-your-own-css-grid-system" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      \[译\]创建你自己的CSS网格系统
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <blockquote>
+<p>原文链接: <a href="http://j4n.co/blog/Creating-your-own-css-grid-system">http://j4n.co/blog/Creating-your-own-css-grid-system</a></p>
+</blockquote>
+<p>CSS网格系统的使用已经有很长时间了，他们经常捆绑在各种框架之中，如Bootstrap。我不讨厌Bootstrap，但是如果你仅仅因需要一个网格系统去使用框架，就显得大材小用了。<br>这里，我将告诉大家如何从无到有创建自己的CSS网格系统。<br><a id="more"></a></p>
+<h2 id="CSS网格元素"><a href="#CSS网格元素" class="headerlink" title="CSS网格元素"></a>CSS网格元素</h2><p><img src="http://j4n.co/content/4-blog/10-Creating-your-own-css-grid-system/grid-elements.png" alt="CSS网格元素示意图"></p>
+<p>正如你所看到的，一个基础的网格系统只包含了很少的元素</p>
+<ul>
+<li>container</li>
+<li>rows</li>
+<li>columns</li>
+<li>gutters（列之间的空间）</li>
+</ul>
+<h2 id="container"><a href="#container" class="headerlink" title="container"></a>container</h2><p><img src="http://j4n.co/content/4-blog/10-Creating-your-own-css-grid-system/container.png" alt="container示意图"></p>
+<p>使用container的目的是要设置整个网格的宽度，通常来说宽度为100%，但对于较大宽度的显示来说，我们应该要设置一个最大宽度。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.grid-container</span> &#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">  <span class="attribute">max-width</span>: <span class="number">1200px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="The-Row"><a href="#The-Row" class="headerlink" title="The Row"></a>The Row</h2><p><img src="http://j4n.co/content/4-blog/10-Creating-your-own-css-grid-system/row.png" alt="Row示意图"></p>
+<p>row元素的使用为保证其中的列不会溢出到其他行，因而我们会使用清除浮动来确保这一点。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*-- our cleafix hack -- */</span> </div><div class="line"><span class="selector-class">.row</span><span class="selector-pseudo">:before</span>, </div><div class="line"><span class="selector-class">.row</span><span class="selector-pseudo">:after</span> &#123;</div><div class="line">  <span class="attribute">content</span>: <span class="string">""</span>;</div><div class="line">  <span class="attribute">display</span>: table ;</div><div class="line">  <span class="attribute">clear</span>:both;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="The-Column"><a href="#The-Column" class="headerlink" title="The Column"></a>The Column</h2><p><img src="http://j4n.co/content/4-blog/10-Creating-your-own-css-grid-system/column.png" alt="Column示意图"></p>
+<p>column绝对是网格中最为复杂的部分。首先，在CSS中有几种不同的方式去定位columns；其次，要考虑宽度及相应设计等因素。本教程中，我们只对columns定位并给定宽度，响应式会留到后面。</p>
+<h3 id="Column-Positioning"><a href="#Column-Positioning" class="headerlink" title="Column Positioning"></a>Column Positioning</h3><p>在CSS中，<code>Floats</code>, <code>inline-blocks</code>, <code>display-table</code>, <code>display-flex</code> 都可以定位columns，从个人的经验来看，这些方法中错误发生的最小几率和最广泛使用的是<code>float</code>方法。但是如果我们的列为空，浮动列将会堆叠到一起，为防止这种情况发生，我们在设置float同时会把<code>min-heigth</code>设置成1px。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="selector-attr">[class*='col-']</span> &#123;</div><div class="line">  <span class="attribute">float</span>: left;</div><div class="line">  <span class="attribute">min-height</span>: <span class="number">1px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="Column-Widths"><a href="#Column-Widths" class="headerlink" title="Column Widths"></a>Column Widths</h3><p>一列的宽度就是将container的宽度除以列的总数。在这里，宽度为100%，如果我们要6个标准列，就可以得到每列宽度为16.66%（100/6=16.6）。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="selector-attr">[class*='col-']</span> &#123;</div><div class="line">  <span class="attribute">float</span>: left;</div><div class="line">  <span class="attribute">min-height</span>: <span class="number">1px</span>;</div><div class="line">  <span class="attribute">width</span>: <span class="number">16.66%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>当然，这只是开始，如果我们希望一个部分是两个标准列宽，我们就需要创建一个 2-column-wide 的列。这种计算非常简单。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.col-1</span>&#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">16.66%</span>; </div><div class="line">&#125;</div><div class="line"><span class="selector-class">.col-2</span>&#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">33.33%</span>; </div><div class="line">&#125;</div><div class="line"><span class="selector-class">.col-3</span>&#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">50%</span>; </div><div class="line">&#125;</div><div class="line"><span class="selector-class">.col-4</span>&#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">66.664%</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.col-5</span>&#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">83.33%</span>;</div><div class="line">&#125;</div><div class="line"><span class="selector-class">.col-6</span>&#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>我们使用这些列组合唯一需要考虑的是最大的标准列总数</p>
+<h3 id="Column-Gutters"><a href="#Column-Gutters" class="headerlink" title="Column Gutters"></a>Column Gutters</h3><p><img src="http://j4n.co/content/4-blog/10-Creating-your-own-css-grid-system/column-gutters.png" alt="Gutters示意图"></p>
+<p>在<code>box-sizing</code>属性出现之前，给百分比宽度元素一个静态的<code>padding</code>是非常痛苦的。幸运的是，我们现在可以很轻松地通过<code>box-sizing</code>来创建gutters。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="comment">/*-- setting border box on all elements inside the grid --*/</span></div><div class="line"><span class="selector-class">.grid-container</span> *&#123;</div><div class="line">  <span class="attribute">box-sizing</span>: border-box; </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-attr">[class*='col-']</span> &#123;</div><div class="line">  <span class="attribute">float</span>: left;</div><div class="line">  <span class="attribute">min-height</span>: <span class="number">1px</span>; </div><div class="line">  <span class="attribute">width</span>: <span class="number">16.66%</span>; </div><div class="line">  <span class="comment">/*-- our gutter --*/</span></div><div class="line">  <span class="attribute">padding</span>: <span class="number">12px</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>（事实上，我会将<code>* { box-sizing: border-box; }</code>应用到所有页面中。）</p>
+<h2 id="这就是我们标准的网格系统"><a href="#这就是我们标准的网格系统" class="headerlink" title="这就是我们标准的网格系统"></a>这就是我们标准的网格系统</h2><p>HTML:<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"grid-container outline"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-1"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>col-1<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-1"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>col-1<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-1"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>col-1<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-1"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>col-1<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-1"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>col-1<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-1"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>col-1<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span> </div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-2"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>col-2<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-2"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>col-2<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-2"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>col-2<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span> </div><div class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"row"</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-3"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>col-3<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </div><div class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"col-3"</span>&gt;</span><span class="tag">&lt;<span class="name">p</span>&gt;</span>col-3<span class="tag">&lt;/<span class="name">p</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </div><div class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span> </div><div class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<p>CSS:<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="selector-class">.grid-container</span>&#123;</div><div class="line">  <span class="attribute">width</span>: <span class="number">100%</span>; </div><div class="line">  <span class="attribute">max-width</span>: <span class="number">1200px</span>;      </div><div class="line">&#125;</div><div class="line"></div><div class="line">    <span class="comment">/*-- our cleafix hack -- */</span> </div><div class="line"><span class="selector-class">.row</span><span class="selector-pseudo">:before</span>, </div><div class="line"><span class="selector-class">.row</span><span class="selector-pseudo">:after</span> &#123;</div><div class="line">  <span class="attribute">content</span>:<span class="string">""</span>;</div><div class="line">  <span class="attribute">display</span>: table ;</div><div class="line">  <span class="attribute">clear</span>:both;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-attr">[class*='col-']</span> &#123;</div><div class="line">  <span class="attribute">float</span>: left; </div><div class="line">  <span class="attribute">min-height</span>: <span class="number">1px</span>; </div><div class="line">  <span class="attribute">width</span>: <span class="number">16.66%</span>; </div><div class="line">  <span class="comment">/*-- our gutter -- */</span></div><div class="line">  <span class="attribute">padding</span>: <span class="number">12px</span>; </div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#FFDCDC</span>;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="selector-class">.col-1</span>&#123; <span class="attribute">width</span>: <span class="number">16.66%</span>; &#125;</div><div class="line"><span class="selector-class">.col-2</span>&#123; <span class="attribute">width</span>: <span class="number">33.33%</span>; &#125;</div><div class="line"><span class="selector-class">.col-3</span>&#123; <span class="attribute">width</span>: <span class="number">50%</span>;    &#125;</div><div class="line"><span class="selector-class">.col-4</span>&#123; <span class="attribute">width</span>: <span class="number">66.66%</span>; &#125;</div><div class="line"><span class="selector-class">.col-5</span>&#123; <span class="attribute">width</span>: <span class="number">83.33%</span>; &#125;</div><div class="line"><span class="selector-class">.col-6</span>&#123; <span class="attribute">width</span>: <span class="number">100%</span>;   &#125;</div><div class="line"><span class="selector-class">.outline</span>, <span class="selector-class">.outline</span> * &#123;</div><div class="line">  <span class="attribute">outline</span>: <span class="number">1px</span> solid <span class="number">#F6A1A1</span>; </div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">/*-- some extra column content styling --*/</span></div><div class="line"><span class="selector-attr">[class*='col-']</span> &gt; <span class="selector-tag">p</span> &#123;</div><div class="line">  <span class="attribute">background-color</span>: <span class="number">#FFC2C2</span>; </div><div class="line">  <span class="attribute">padding</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">margin</span>: <span class="number">0</span>;</div><div class="line">  <span class="attribute">text-align</span>: center; </div><div class="line">  <span class="attribute">color</span>: white; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h2 id="响应式网格"><a href="#响应式网格" class="headerlink" title="响应式网格"></a>响应式网格</h2><ul>
+<li>调整我们的网格的移动布局很简单，只需要调整列的宽度。</li>
+<li>为简单起见，我将为800px下的屏幕把列的宽度加倍。</li>
+<li>唯一需要注意的是一些特殊情况：在row中的最后一列。如在<code>.col-2</code>和<code>.col-1</code>在<code>.col-5</code>的旁边。</li>
+<li>为解决这个问题，要将列最后的<code>.col-2</code>和<code>.col-1</code>设置为<code>width: 100%</code>。<figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">media</span> all and (max-width: <span class="number">800px</span>) &#123;</div><div class="line">  <span class="selector-class">.col-1</span>&#123; <span class="attribute">width</span>: <span class="number">33.33%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-2</span>&#123; <span class="attribute">width</span>: <span class="number">50%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-3</span>&#123; <span class="attribute">width</span>: <span class="number">83.33%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-4</span>&#123; <span class="attribute">width</span>: <span class="number">100%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-5</span>&#123; <span class="attribute">width</span>: <span class="number">100%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-6</span>&#123; <span class="attribute">width</span>: <span class="number">100%</span>; &#125;</div><div class="line">  </div><div class="line">  <span class="selector-class">.row</span> <span class="selector-class">.col-2</span><span class="selector-pseudo">:last-of-type</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  <span class="selector-class">.row</span> <span class="selector-class">.col-5</span> ~ <span class="selector-class">.col-1</span> &#123;</div><div class="line">    <span class="attribute">width</span>: <span class="number">100%</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>对于小于800px的屏幕，我们会将出了最小的列以外的都设置成100%。<br><figure class="highlight css"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line">@<span class="keyword">media</span> all and (max-width: <span class="number">650px</span>) &#123;</div><div class="line">  <span class="selector-class">.col-1</span>&#123; <span class="attribute">width</span>: <span class="number">50%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-2</span>&#123; <span class="attribute">width</span>: <span class="number">100%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-3</span>&#123; <span class="attribute">width</span>: <span class="number">100%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-4</span>&#123; <span class="attribute">width</span>: <span class="number">100%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-5</span>&#123; <span class="attribute">width</span>: <span class="number">100%</span>; &#125;</div><div class="line">  <span class="selector-class">.col-6</span>&#123; <span class="attribute">width</span>: <span class="number">100%</span>; &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>以上，我们就可以创建属于我们自己的响应式网格系统了。</p>
+<p><strong>但要注意，此教程只是创建自己的系统的开端，这不是一个框架或者说一个完整的解决方案，但我希望它能为大家揭开创建CSS网格神秘的面纱</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <p class="article-date">
+  <time datetime="2017-03-07T00:25:00.000Z" itemprop="datePublished">2017-03-07</time>
+</p>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Translate/">Translate</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/04/03/Monthly-2017-3/" id="articleNewer" class="btn">上一篇</a>
+  
+  
+</nav>
+
+  
+</article>
+
+
+
+</main>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Manzeon<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
