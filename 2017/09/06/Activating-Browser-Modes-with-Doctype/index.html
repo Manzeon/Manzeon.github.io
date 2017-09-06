@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>用Doctype激活浏览器模式 - Manzeon</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="用&amp;lt;!DOCTYPE html&amp;gt;作为源文件内容的首行来开始编写你的HTML文档。">
+<meta name="keywords" content="html">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用Doctype激活浏览器模式">
+<meta property="og:url" content="http://www.gongwenjun.com/2017/09/06/Activating-Browser-Modes-with-Doctype/index.html">
+<meta property="og:site_name" content="Manzeon">
+<meta property="og:description" content="用&amp;lt;!DOCTYPE html&amp;gt;作为源文件内容的首行来开始编写你的HTML文档。">
+<meta property="og:updated_time" content="2017-09-06T15:23:00.596Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用Doctype激活浏览器模式">
+<meta name="twitter:description" content="用&amp;lt;!DOCTYPE html&amp;gt;作为源文件内容的首行来开始编写你的HTML文档。">
+  
+  
+    <link rel="icon" href="http://ota91wfkz.bkt.clouddn.com/favicon.jpg">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <img src="http://ota91wfkz.bkt.clouddn.com/favicon.jpg" alt="logo">
+        <a href="/" id="logo">Manzeon</a>
+      </h1>
+      <ul class="social-links">
+        
+        <li><a href="https://github.com/Manzeon">github</a></li>
+        
+        <li><a href="mailto:gwj19950626@gmail.com">email</a></li>
+        
+        <li><a href="/atom.xml">rrs</a></li>
+        
+      </ul>
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <ul>
+        
+        <li><a class="main-nav-link" href="/">Home</a></li>
+        
+        <li><a class="main-nav-link" href="/archives">Archives</a></li>
+        
+        <li><a class="main-nav-link" href="/about">About</a></li>
+        
+        </ul>
+      </nav>
+    </div>
+</header>
+<header id="header-mobile">
+  <a id="main-nav-toggle" class="nav-icon"></a>
+  <img src="http://ota91wfkz.bkt.clouddn.com/favicon.jpg" alt="logo">
+</header>
+      <main id="main"><article id="post-Activating-Browser-Modes-with-Doctype" class="article article-type-post" itemscope itemprop="blogPost">
+
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      用Doctype激活浏览器模式
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>用<code>&lt;!DOCTYPE html&gt;</code>作为源文件内容的首行来开始编写你的HTML文档。<br><a id="more"></a></p>
+<h2 id="常见模式"><a href="#常见模式" class="headerlink" title="常见模式"></a>常见模式</h2><p>浏览器的排版引擎有三种模式：怪异模式、接近标准模式以及标准模式，对HTML文件来说，<strong>浏览器使用文件开头的 DOCTYPE 来决定用怪异模式处理或标准模式处理。</strong><br>而DOCTYPE只是一个声明，并不是一个标签。</p>
+<ul>
+<li>怪异模式：在怪异模式下，浏览器违反了当代的Web标准，以避免“破坏”按照上世纪90年代末流行的传统方式编写的页面。</li>
+<li>标准模式：在标准模式下，浏览器会试图以Web规范标准的处理方式提供给特定浏览器。</li>
+<li>接近标准模式：Firefox、Safari、Chrome、Opera(7.5)、IE8、IE9和IE10也有一种被称为“接近标准模式”的模式，他们用传统的方法去调整表格单元格的垂直大小，而不是根据CSS2的标准。</li>
+</ul>
+<p>如果是开发新的页面，都建议使用标准模式。</p>
+<h2 id="关于怪异模式的表现"><a href="#关于怪异模式的表现" class="headerlink" title="关于怪异模式的表现"></a>关于怪异模式的表现</h2><p>可参考 <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Mozilla_quirks_mode_behavior">Mozilla Quirks Mode Behavior</a></p>
+<h2 id="DOCTYPE的选择"><a href="#DOCTYPE的选择" class="headerlink" title="DOCTYPE的选择"></a>DOCTYPE的选择</h2><h3 id="text-html"><a href="#text-html" class="headerlink" title="text/html"></a>text/html</h3><ul>
+<li>HTML标准模式<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>最推荐使用的声明，可验证HTML5新特性。</p>
+<ul>
+<li><p>HTML4.01标准模式</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd"&gt;</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>接近标准模式</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"&gt;</span></div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>此标准下的的源文件移动到HTML5下布局可能会被破坏。</p>
+<ul>
+<li>怪异模式<br>没有声明DOCTYPE的时候，IE旧版本浏览器会进入怪异模式，如果因为客户需求，还需要兼容到旧版本的IE，应该使用条件注释来解决问题，而不是进入怪异模式。</li>
+</ul>
+<h3 id="application-xhtml-xml"><a href="#application-xhtml-xml" class="headerlink" title="application/xhtml+xml"></a>application/xhtml+xml</h3><p>如果在XHTML的<code>content-type</code>HTTP标头使用<code>application/xhtml+xml</code>MIME类型，则不需要使用DOCTYPE启动标准模式，因为这种文件永远都会使用标准模式。（使用此标头会使IE8在未知格式的情况下出现下载对话框，浏览器从IE9才开始支持XHTML）</p>
+<h2 id="IE8、IE9、IE10的问题"><a href="#IE8、IE9、IE10的问题" class="headerlink" title="IE8、IE9、IE10的问题"></a>IE8、IE9、IE10的问题</h2><p>IE8、IE9、IE10存在多种模式，如IE8有四种模式：IE5.5怪异模式、IE7标准模式、IE8接近标准模式以及IE8标准模式。模式的选择取决于DOCTYPE、meta标签及HTTP头，如果没有meta或者HTTP头，即使你选择了正确的DOCTYPE，IE8和IE9会让用户意外地掉入到IE7模式中。所以还需要包括一个<code>X-UA-Compatible</code>的HTTP头或meta标签。所以需要在页面上增加meta标签（在HTML5中是无效的，另外该标签必须放在所有脚本元素之前）：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">meta</span> <span class="attr">http-equiv</span>=<span class="string">"X-UA-Compatible"</span> <span class="attr">content</span>=<span class="string">"IE=Edge"</span>&gt;</span></div></pre></td></tr></table></figure></p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a href="https://hsivonen.fi/doctype/">Activating Browser Modes with Doctype</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Quirks_Mode_and_Standards_Mode">Quirks Mode and Standards Mode</a></li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <p class="article-date">
+  <time datetime="2017-09-06T06:00:00.000Z" itemprop="datePublished">2017-09-06</time>
+</p>
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html/">html</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2017/09/06/Box-Model/" id="articleNewer" class="btn">上一篇</a>
+  
+  
+    <a href="/2017/07/18/GitHubPage-rebuild/" id="articleOlder" class="btn">下一篇</a>
+  
+</nav>
+
+  
+</article>
+
+
+
+</main>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2017 Manzeon<br>
+      powered_by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/script.js"></script>
+
+  </div>
+</body>
+</html>
